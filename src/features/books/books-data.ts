@@ -1,39 +1,42 @@
 import { kannadaText } from "@/lib/content/kannada";
 
-export type BookPortal = {
+export type LiteraryWorkTier = "primary" | "secondary";
+
+export type LiteraryAtmosphere = {
+  bg: string;
+  accent: string;
+  mist: string;
+  rain: string;
+  glow: string;
+  shadow: string;
+  texture: string;
+};
+
+export type LiteraryWork = {
   id: string;
+  tier: LiteraryWorkTier;
   englishTitle: string;
-  kannadaTitle: string;
+  kannadaTitle?: string;
+  form: string;
   tone: string;
+  mood: string;
   themes: string[];
-  fragmentKannada: string;
+  fragmentKannada?: string;
   fragmentEnglish: string;
-  atmosphere: {
-    bg: string;
-    accent: string;
-    mist: string;
-    rain: string;
-    glow: string;
-    shadow: string;
-    texture: string;
-  };
+  atmosphere: LiteraryAtmosphere;
   soundMood: string;
   transition: string;
 };
 
-export type SecondaryWork = {
-  id: string;
-  title: string;
-  form: string;
-  mood: string;
-};
-
-export const bookPortals: BookPortal[] = [
+export const bookPortals: LiteraryWork[] = [
   {
     id: "karvalo",
+    tier: "primary",
     englishTitle: "Karvalo",
     kannadaTitle: kannadaText.bookKarvalo,
+    form: "novel",
     tone: "wonder, pursuit, ecological mystery",
+    mood: "forest science",
     themes: ["forest science", "curiosity", "the miraculous ordinary"],
     fragmentKannada: kannadaText.bookKarvaloFragment,
     fragmentEnglish:
@@ -52,9 +55,12 @@ export const bookPortals: BookPortal[] = [
   },
   {
     id: "chidambara-rahasya",
+    tier: "primary",
     englishTitle: "Chidambara Rahasya",
     kannadaTitle: kannadaText.bookChidambaraRahasya,
+    form: "novel",
     tone: "village mystery, satire, humid suspense",
+    mood: "humid secrecy",
     themes: ["rural society", "secrecy", "comic darkness"],
     fragmentKannada: kannadaText.bookChidambaraFragment,
     fragmentEnglish:
@@ -73,9 +79,12 @@ export const bookPortals: BookPortal[] = [
   },
   {
     id: "jugari-cross",
+    tier: "primary",
     englishTitle: "Jugari Cross",
     kannadaTitle: kannadaText.bookJugariCross,
+    form: "novel",
     tone: "night road, danger, restless momentum",
+    mood: "wet road",
     themes: ["thrill", "uncertainty", "moral weather"],
     fragmentKannada: kannadaText.bookJugariFragment,
     fragmentEnglish:
@@ -94,9 +103,12 @@ export const bookPortals: BookPortal[] = [
   },
   {
     id: "abachurina-post-office",
+    tier: "primary",
     englishTitle: "Abachurina Post Office",
     kannadaTitle: kannadaText.bookAbachurinaPostOffice,
+    form: "story",
     tone: "rural intimacy, letter, human warmth",
+    mood: "postal paper",
     themes: ["village life", "communication", "small revelations"],
     fragmentKannada: kannadaText.bookAbachurinaFragment,
     fragmentEnglish:
@@ -115,53 +127,183 @@ export const bookPortals: BookPortal[] = [
   }
 ];
 
-export const secondaryWorks: SecondaryWork[] = [
+export const secondaryWorks: LiteraryWork[] = [
   {
     id: "mayaloka",
-    title: "Mayaloka",
+    tier: "secondary",
+    englishTitle: "Mayaloka",
     form: "novel",
-    mood: "dream terrain"
+    tone: "dream terrain, shifting reality",
+    mood: "dream terrain",
+    themes: ["imagination", "strangeness", "inner weather"],
+    fragmentEnglish:
+      "A quieter threshold where reality loosens and the landscape becomes inward.",
+    atmosphere: {
+      bg: "#0C0E0B",
+      accent: "#A99A68",
+      mist: "#8F967F",
+      rain: "#4B554B",
+      glow: "rgba(153, 142, 96, 0.18)",
+      shadow: "rgba(5, 8, 4, 0.9)",
+      texture: "dream-paper"
+    },
+    soundMood: "soft drone, after-rain stillness",
+    transition: "mist turns inward"
   },
   {
     id: "swaroopa",
-    title: "Swaroopa",
+    tier: "secondary",
+    englishTitle: "Swaroopa",
     form: "novel",
-    mood: "inner form"
+    tone: "form, identity, reflective quiet",
+    mood: "inner form",
+    themes: ["self", "shape", "philosophical reflection"],
+    fragmentEnglish:
+      "A reflective chamber where form is not surface, but a question held in low light.",
+    atmosphere: {
+      bg: "#11100D",
+      accent: "#B79A62",
+      mist: "#999180",
+      rain: "#5A5A52",
+      glow: "rgba(181, 145, 88, 0.16)",
+      shadow: "rgba(10, 8, 5, 0.9)",
+      texture: "ink-form"
+    },
+    soundMood: "low room tone, paper breath",
+    transition: "ink settles into shape"
   },
   {
     id: "yamala-prashne",
-    title: "Yamala Prashne",
+    tier: "secondary",
+    englishTitle: "Yamala Prashne",
     form: "drama",
-    mood: "question and echo"
+    tone: "question, echo, theatrical shadow",
+    mood: "question and echo",
+    themes: ["dialogue", "doubt", "performance"],
+    fragmentEnglish:
+      "A question echoes like a voice from the far end of a darkened room.",
+    atmosphere: {
+      bg: "#0D0A09",
+      accent: "#B28755",
+      mist: "#8D8072",
+      rain: "#504A45",
+      glow: "rgba(178, 120, 78, 0.16)",
+      shadow: "rgba(8, 4, 3, 0.92)",
+      texture: "stage-paper"
+    },
+    soundMood: "wooden room, distant rain",
+    transition: "shadow pauses before speech"
   },
   {
     id: "huliyurina-sarahaddu",
-    title: "Huliyurina Sarahaddu",
+    tier: "secondary",
+    englishTitle: "Huliyurina Sarahaddu",
     form: "stories",
-    mood: "village edge"
+    tone: "village edge, dry wit, social weather",
+    mood: "village edge",
+    themes: ["village", "boundary", "human comedy"],
+    fragmentEnglish:
+      "At the edge of the village, small human movements begin to gather weather.",
+    atmosphere: {
+      bg: "#120F0A",
+      accent: "#B9945B",
+      mist: "#9B8D76",
+      rain: "#5E574B",
+      glow: "rgba(174, 129, 75, 0.16)",
+      shadow: "rgba(12, 7, 3, 0.9)",
+      texture: "village-dust"
+    },
+    soundMood: "distant voices, soft earth",
+    transition: "a boundary appears through dust"
   },
   {
     id: "svagata-lahari",
-    title: "Svagata Lahari",
+    tier: "secondary",
+    englishTitle: "Svagata Lahari",
     form: "poems",
-    mood: "lyrical memory"
+    tone: "lyrical memory, inward arrival",
+    mood: "lyrical memory",
+    themes: ["poetry", "arrival", "voice"],
+    fragmentEnglish:
+      "A softer current of voice moves beneath the larger forest of prose.",
+    atmosphere: {
+      bg: "#10110C",
+      accent: "#C0A46D",
+      mist: "#AAA184",
+      rain: "#666552",
+      glow: "rgba(190, 164, 109, 0.16)",
+      shadow: "rgba(8, 9, 4, 0.9)",
+      texture: "poem-grain"
+    },
+    soundMood: "thin rain, quiet breath",
+    transition: "a line of light crosses paper"
   },
   {
     id: "kannada-nadina-hakkigalu",
-    title: "Kannada Nadina Hakkigalu",
+    tier: "secondary",
+    englishTitle: "Kannada Nadina Hakkigalu",
     form: "nature writing",
-    mood: "bird field-notes"
+    tone: "bird field-notes, patient attention",
+    mood: "bird field-notes",
+    themes: ["birds", "field observation", "ecology"],
+    fragmentEnglish:
+      "Attention lifts from the page like a bird call heard through wet leaves.",
+    atmosphere: {
+      bg: "#08110D",
+      accent: "#A7A968",
+      mist: "#9FAE98",
+      rain: "#52665B",
+      glow: "rgba(155, 176, 112, 0.18)",
+      shadow: "rgba(2, 10, 6, 0.9)",
+      texture: "field-guide"
+    },
+    soundMood: "distant bird calls, leaf drip",
+    transition: "a small call opens the canopy"
   },
   {
     id: "hosa-vicharagalu",
-    title: "Hosa Vicharagalu",
+    tier: "secondary",
+    englishTitle: "Hosa Vicharagalu",
     form: "essays",
-    mood: "restless thought"
+    tone: "restless thought, inquiry, critique",
+    mood: "restless thought",
+    themes: ["ideas", "critique", "curiosity"],
+    fragmentEnglish:
+      "Thought moves as weather does: restless, unsentimental, searching for pressure.",
+    atmosphere: {
+      bg: "#0C0D0B",
+      accent: "#AD955F",
+      mist: "#949486",
+      rain: "#565B58",
+      glow: "rgba(171, 148, 95, 0.15)",
+      shadow: "rgba(5, 6, 4, 0.9)",
+      texture: "essay-margin"
+    },
+    soundMood: "room tone, pen on paper",
+    transition: "a margin note warms into view"
   },
   {
     id: "by-the-corner-of-indian-western-ghats",
-    title: "By the Corner of Indian Western Ghats",
+    tier: "secondary",
+    englishTitle: "By the Corner of Indian Western Ghats",
     form: "nature study",
-    mood: "Western Ghats margin"
+    tone: "Western Ghats margin, ecological attention",
+    mood: "Western Ghats margin",
+    themes: ["Western Ghats", "landscape", "ecology"],
+    fragmentEnglish:
+      "The Ghats appear not as scenery, but as a living margin of attention.",
+    atmosphere: {
+      bg: "#07100C",
+      accent: "#9F9F60",
+      mist: "#9CAE99",
+      rain: "#53695E",
+      glow: "rgba(142, 164, 105, 0.17)",
+      shadow: "rgba(2, 9, 6, 0.9)",
+      texture: "ghats-margin"
+    },
+    soundMood: "mist, leaf water, far valley",
+    transition: "the ridge line darkens softly"
   }
 ];
+
+export const literaryWorks = [...bookPortals, ...secondaryWorks];

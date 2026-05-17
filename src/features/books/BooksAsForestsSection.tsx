@@ -12,7 +12,12 @@ import { CinematicSection } from "@/components/primitives/CinematicSection";
 import { SceneLayer } from "@/components/primitives/SceneLayer";
 import { kannadaText } from "@/lib/content/kannada";
 import { cinematicEase } from "@/lib/motion/easings";
-import { bookPortals, secondaryWorks, type BookPortal } from "./books-data";
+import {
+  bookPortals,
+  literaryWorks,
+  secondaryWorks,
+  type LiteraryWork
+} from "./books-data";
 
 type BookAtmosphereStyle = CSSProperties & {
   "--book-bg": string;
@@ -24,7 +29,7 @@ type BookAtmosphereStyle = CSSProperties & {
 };
 
 export function BooksAsForestsSection() {
-  const [activeBookId, setActiveBookId] = useState(bookPortals[0].id);
+  const [activeWorkId, setActiveWorkId] = useState(bookPortals[0].id);
   const sectionRef = useRef<HTMLElement | null>(null);
   const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -32,21 +37,22 @@ export function BooksAsForestsSection() {
     offset: ["start end", "end start"]
   });
 
-  const activeBook = useMemo(
-    () => bookPortals.find((book) => book.id === activeBookId) ?? bookPortals[0],
-    [activeBookId]
+  const activeWork = useMemo(
+    () =>
+      literaryWorks.find((work) => work.id === activeWorkId) ?? bookPortals[0],
+    [activeWorkId]
   );
 
   const style = useMemo<BookAtmosphereStyle>(
     () => ({
-      "--book-bg": activeBook.atmosphere.bg,
-      "--book-accent": activeBook.atmosphere.accent,
-      "--book-mist": activeBook.atmosphere.mist,
-      "--book-rain": activeBook.atmosphere.rain,
-      "--book-glow": activeBook.atmosphere.glow,
-      "--book-shadow": activeBook.atmosphere.shadow
+      "--book-bg": activeWork.atmosphere.bg,
+      "--book-accent": activeWork.atmosphere.accent,
+      "--book-mist": activeWork.atmosphere.mist,
+      "--book-rain": activeWork.atmosphere.rain,
+      "--book-glow": activeWork.atmosphere.glow,
+      "--book-shadow": activeWork.atmosphere.shadow
     }),
-    [activeBook]
+    [activeWork]
   );
 
   const forestY = useTransform(scrollYProgress, [0, 1], ["8%", "-12%"]);
@@ -60,7 +66,7 @@ export function BooksAsForestsSection() {
       id="books-forests"
       ref={sectionRef}
       atmosphere="books-forests"
-      data-soundscape={`book-portal-${activeBook.id}-${activeBook.soundMood}`}
+      data-soundscape={`book-portal-${activeWork.id}-${activeWork.soundMood}`}
       className="books-forests-scene min-h-[310svh]"
       style={style}
     >
@@ -79,52 +85,65 @@ export function BooksAsForestsSection() {
         <SceneLayer className="books-climate-veil" depth="veil" />
         <SceneLayer className="books-portal-light" depth="veil" />
 
-        <div className="relative z-20 grid h-full grid-rows-[auto_1fr] px-6 pb-8 pt-24 md:px-12 lg:grid-cols-[minmax(18rem,0.78fr)_minmax(0,1.22fr)] lg:grid-rows-1 lg:gap-10 lg:px-20 lg:py-24">
+        <div
+          className="books-forests-frame relative z-20 h-full px-6 pb-8 pt-24 md:px-12 lg:px-20 lg:pb-10 lg:pt-24"
+          data-active-tier={activeWork.tier}
+        >
           <motion.div
-            className="books-forests-intro self-start lg:self-center"
+            className="books-forests-intro"
             style={{
               opacity: prefersReducedMotion ? 1 : titleOpacity,
               y: prefersReducedMotion ? 0 : titleY
             }}
           >
-            <p className="museum-label mb-6 text-[color:var(--book-accent)]">
-              BOOKS AS FORESTS
-            </p>
-            <h2 className="max-w-4xl font-kannada text-[clamp(2.65rem,7.5vw,8.8rem)] font-semibold leading-[1.02] text-[color:var(--atmosphere-fg)]">
+            <h2 className="books-section-title font-kannada font-semibold text-[color:var(--atmosphere-fg)]">
               {kannadaText.booksForestsTitle}
             </h2>
-            <p className="mt-7 max-w-xl text-balance font-editorial text-xl leading-9 text-[color:color-mix(in_srgb,var(--atmosphere-fg)_64%,transparent)] md:text-2xl">
+            <p className="museum-label books-section-label mt-4 text-[color:var(--book-accent)]">
+              BOOKS AS FORESTS
+            </p>
+            <p className="books-section-whisper mt-3 max-w-xl text-balance font-editorial text-lg leading-7 text-[color:color-mix(in_srgb,var(--atmosphere-fg)_64%,transparent)] md:text-xl">
               {kannadaText.booksForestsWhisper}
             </p>
           </motion.div>
 
           <motion.div
-            className="books-portal-system self-end lg:self-center"
+            className="books-portal-system"
             style={{ opacity: prefersReducedMotion ? 1 : portalOpacity }}
           >
             <div className="books-active-world" aria-live="polite">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeBook.id}
+                  key={activeWork.id}
                   initial={{ opacity: 0, y: 22, filter: "blur(18px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -18, filter: "blur(18px)" }}
                   transition={{ duration: 0.9, ease: cinematicEase }}
                 >
                   <p className="museum-label mb-5 text-[color:var(--book-accent)]">
-                    {activeBook.tone}
+                    {activeWork.tone}
                   </p>
-                  <h3 className="book-world-title font-kannada text-[clamp(2.4rem,7vw,7.4rem)] font-semibold leading-[1.03] text-[color:var(--atmosphere-fg)]">
-                    {activeBook.kannadaTitle}
+                  <h3
+                    className={
+                      activeWork.kannadaTitle
+                        ? "book-world-title font-kannada font-semibold text-[color:var(--atmosphere-fg)]"
+                        : "book-world-title book-world-title-latin font-editorial font-semibold text-[color:var(--atmosphere-fg)]"
+                    }
+                  >
+                    {activeWork.kannadaTitle ?? activeWork.englishTitle}
                   </h3>
-                  <p className="mt-3 font-editorial text-2xl text-[color:color-mix(in_srgb,var(--atmosphere-fg)_58%,transparent)] md:text-3xl">
-                    {activeBook.englishTitle}
+                  <p className="mt-3 font-editorial text-xl text-[color:color-mix(in_srgb,var(--atmosphere-fg)_58%,transparent)] md:text-2xl">
+                    {activeWork.kannadaTitle
+                      ? activeWork.englishTitle
+                      : `${activeWork.form} · ${activeWork.mood}`}
                   </p>
-                  <p className="mt-8 max-w-2xl font-kannada text-[clamp(1.45rem,3.2vw,3.4rem)] leading-[1.22] text-[color:color-mix(in_srgb,var(--atmosphere-fg)_86%,transparent)]">
-                    {activeBook.fragmentKannada}
-                  </p>
+                  {activeWork.fragmentKannada ? (
+                    <p className="book-world-fragment mt-7 max-w-2xl font-kannada text-[color:color-mix(in_srgb,var(--atmosphere-fg)_86%,transparent)]">
+                      {activeWork.fragmentKannada}
+                    </p>
+                  ) : null}
                   <p className="mt-5 max-w-xl font-editorial text-lg leading-8 text-[color:color-mix(in_srgb,var(--atmosphere-fg)_62%,transparent)] md:text-xl">
-                    {activeBook.fragmentEnglish}
+                    {activeWork.fragmentEnglish}
                   </p>
                 </motion.div>
               </AnimatePresence>
@@ -134,31 +153,42 @@ export function BooksAsForestsSection() {
               {bookPortals.map((book, index) => (
                 <BookPortalButton
                   key={book.id}
-                  book={book}
+                  work={book}
                   index={index}
-                  active={book.id === activeBook.id}
-                  onFocus={() => setActiveBookId(book.id)}
-                  onPointerEnter={() => setActiveBookId(book.id)}
-                  onClick={() => setActiveBookId(book.id)}
+                  active={book.id === activeWork.id}
+                  onFocus={() => setActiveWorkId(book.id)}
+                  onPointerEnter={() => setActiveWorkId(book.id)}
+                  onClick={() => setActiveWorkId(book.id)}
                 />
               ))}
             </div>
 
             <div className="books-world-metadata" aria-label="Selected atmosphere">
-              <span>{activeBook.transition}</span>
-              <span>{activeBook.soundMood}</span>
-              <span>{activeBook.atmosphere.texture}</span>
+              <span>{activeWork.transition}</span>
+              <span>{activeWork.soundMood}</span>
+              <span>{activeWork.atmosphere.texture}</span>
             </div>
 
             <div className="books-secondary-constellation" aria-label="Additional works">
               <p className="museum-label">ARCHIVAL CONSTELLATION</p>
               <div className="books-secondary-list">
-                {secondaryWorks.map((work) => (
-                  <span key={work.id} className="books-secondary-work">
-                    <span>{work.title}</span>
+                {secondaryWorks.map((work, index) => (
+                  <button
+                    key={work.id}
+                    type="button"
+                    className="books-secondary-work"
+                    data-active={work.id === activeWork.id}
+                    aria-pressed={work.id === activeWork.id}
+                    aria-label={`Explore ${work.englishTitle}`}
+                    onFocus={() => setActiveWorkId(work.id)}
+                    onPointerEnter={() => setActiveWorkId(work.id)}
+                    onClick={() => setActiveWorkId(work.id)}
+                    style={{ "--constellation-index": index } as CSSProperties}
+                  >
+                    <span>{work.englishTitle}</span>
                     <span>{work.form}</span>
                     <span>{work.mood}</span>
-                  </span>
+                  </button>
                 ))}
               </div>
             </div>
@@ -170,7 +200,7 @@ export function BooksAsForestsSection() {
 }
 
 type BookPortalButtonProps = {
-  book: BookPortal;
+  work: LiteraryWork;
   index: number;
   active: boolean;
   onFocus: () => void;
@@ -179,7 +209,7 @@ type BookPortalButtonProps = {
 };
 
 function BookPortalButton({
-  book,
+  work,
   index,
   active,
   onFocus,
@@ -191,7 +221,7 @@ function BookPortalButton({
       type="button"
       className="book-portal"
       aria-pressed={active}
-      aria-label={`Enter ${book.englishTitle}`}
+      aria-label={`Enter ${work.englishTitle}`}
       data-active={active}
       onFocus={onFocus}
       onPointerEnter={onPointerEnter}
@@ -208,8 +238,8 @@ function BookPortalButton({
       <span className="book-portal-index">0{index + 1}</span>
       <span className="book-portal-spine" />
       <span className="book-portal-copy">
-        <span className="font-kannada">{book.kannadaTitle}</span>
-        <span>{book.englishTitle}</span>
+        <span className="font-kannada">{work.kannadaTitle}</span>
+        <span>{work.englishTitle}</span>
       </span>
     </motion.button>
   );
