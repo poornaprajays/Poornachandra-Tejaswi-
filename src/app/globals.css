@@ -610,8 +610,8 @@ a {
 
 .books-forests-frame {
   display: grid;
-  grid-template-rows: minmax(clamp(13.5rem, 31svh, 18.5rem), auto) minmax(0, 1fr);
-  gap: clamp(1.35rem, 4svh, 3rem);
+  grid-template-rows: minmax(clamp(10.8rem, 25svh, 16.5rem), auto) minmax(0, 1fr);
+  gap: clamp(1rem, 2.4svh, 2.2rem);
 }
 
 .books-forests-intro {
@@ -644,7 +644,7 @@ a {
   min-height: 0;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto auto minmax(0, auto);
-  gap: clamp(0.7rem, 1.45svh, 1.1rem);
+  gap: clamp(0.58rem, 1.15svh, 0.9rem);
   align-self: start;
 }
 
@@ -681,26 +681,22 @@ a {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(0.45rem, 1vw, 0.8rem);
-  max-height: min(31svh, 18rem);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding-right: 0.25rem;
-  scrollbar-color: color-mix(in srgb, var(--book-accent) 42%, transparent) transparent;
-  scrollbar-width: thin;
+  overflow: visible;
+  padding-right: 0;
 }
 
 .book-portal {
   position: relative;
   display: grid;
-  min-height: clamp(4.9rem, 8.4svh, 6.6rem);
+  min-height: clamp(4.35rem, 7.2svh, 5.85rem);
   grid-template-columns: auto 1px 1fr;
-  gap: 0.9rem;
+  gap: clamp(0.62rem, 1vw, 0.9rem);
   align-items: end;
   overflow: hidden;
   border: 0;
   border-left: 1px solid color-mix(in srgb, var(--atmosphere-fg) 16%, transparent);
   border-radius: 0;
-  padding: 0.72rem 0.72rem 0.72rem 0.82rem;
+  padding: clamp(0.58rem, 0.9svh, 0.72rem) clamp(0.56rem, 0.9vw, 0.72rem) clamp(0.58rem, 0.9svh, 0.72rem) clamp(0.68rem, 1vw, 0.82rem);
   background:
     radial-gradient(ellipse at 50% 100%, color-mix(in srgb, var(--book-accent) 13%, transparent), transparent 72%),
     linear-gradient(180deg, transparent, rgb(0 0 0 / 0.24));
@@ -763,14 +759,14 @@ a {
 }
 
 .book-portal-copy span:first-child {
-  font-size: clamp(0.98rem, 1.55vw, 1.28rem);
-  line-height: 1.22;
+  font-size: clamp(0.92rem, 1.35vw, 1.22rem);
+  line-height: 1.18;
   text-wrap: balance;
 }
 
 .book-portal-copy span:last-child {
   font-family: var(--font-editorial);
-  font-size: 0.86rem;
+  font-size: clamp(0.76rem, 0.9vw, 0.86rem);
   line-height: 1.2;
   color: color-mix(in srgb, var(--atmosphere-fg) 48%, transparent);
 }
