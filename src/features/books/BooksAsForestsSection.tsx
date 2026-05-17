@@ -60,6 +60,14 @@ export function BooksAsForestsSection() {
   const titleOpacity = useTransform(scrollYProgress, [0.06, 0.22, 0.94], [0, 1, 1]);
   const titleY = useTransform(scrollYProgress, [0.06, 0.55], ["36px", "-18px"]);
   const portalOpacity = useTransform(scrollYProgress, [0.12, 0.28], [0, 1]);
+  const activeSubtitle = [
+    activeWork.englishTitle,
+    activeWork.form,
+    activeWork.year,
+    activeWork.origin
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <CinematicSection
@@ -133,9 +141,7 @@ export function BooksAsForestsSection() {
                     {activeWork.kannadaTitle ?? activeWork.englishTitle}
                   </h3>
                   <p className="mt-3 font-editorial text-xl text-[color:color-mix(in_srgb,var(--atmosphere-fg)_58%,transparent)] md:text-2xl">
-                    {activeWork.kannadaTitle
-                      ? activeWork.englishTitle
-                      : `${activeWork.form} · ${activeWork.mood}`}
+                    {activeSubtitle}
                   </p>
                   {activeWork.fragmentKannada ? (
                     <p className="book-world-fragment mt-7 max-w-2xl font-kannada text-[color:color-mix(in_srgb,var(--atmosphere-fg)_86%,transparent)]">

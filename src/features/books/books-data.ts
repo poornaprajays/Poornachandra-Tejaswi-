@@ -18,6 +18,8 @@ export type LiteraryWork = {
   englishTitle: string;
   kannadaTitle?: string;
   form: string;
+  year?: number;
+  origin?: string;
   tone: string;
   mood: string;
   themes: string[];
@@ -35,6 +37,7 @@ export const bookPortals: LiteraryWork[] = [
     englishTitle: "Karvalo",
     kannadaTitle: kannadaText.bookKarvalo,
     form: "novel",
+    year: 1980,
     tone: "wonder, pursuit, ecological mystery",
     mood: "forest science",
     themes: ["forest science", "curiosity", "the miraculous ordinary"],
@@ -124,26 +127,51 @@ export const bookPortals: LiteraryWork[] = [
     },
     soundMood: "paper, afternoon rain, distant human murmur",
     transition: "paper glow rises from darkness"
-  }
-];
-
-export const secondaryWorks: LiteraryWork[] = [
+  },
+  {
+    id: "missing-link",
+    tier: "primary",
+    englishTitle: "Missing Link",
+    kannadaTitle: kannadaText.bookMissingLink,
+    form: "popular science",
+    year: 1991,
+    origin: "original",
+    tone: "evolution, science, accessible wonder",
+    mood: "evolutionary question",
+    themes: ["evolution", "popular science", "origins"],
+    fragmentKannada: kannadaText.bookMissingLinkFragment,
+    fragmentEnglish:
+      "An accessible science work where evolution, evidence, and wonder meet in the question of origins.",
+    atmosphere: {
+      bg: "#0A0F10",
+      accent: "#A7B46A",
+      mist: "#A4B4A5",
+      rain: "#5D7370",
+      glow: "rgba(155, 182, 116, 0.24)",
+      shadow: "rgba(3, 9, 10, 0.9)",
+      texture: "evolution-fieldnote"
+    },
+    soundMood: "quiet laboratory rain, page notes, low forest insects",
+    transition: "a fossil trace glows through mist"
+  },
   {
     id: "mayaloka",
-    tier: "secondary",
+    tier: "primary",
     englishTitle: "Mayaloka",
+    kannadaTitle: kannadaText.bookMayaloka,
     form: "novel",
     tone: "dream terrain, shifting reality",
     mood: "dream terrain",
     themes: ["imagination", "strangeness", "inner weather"],
+    fragmentKannada: kannadaText.bookMayalokaFragment,
     fragmentEnglish:
-      "A quieter threshold where reality loosens and the landscape becomes inward.",
+      "A threshold where reality loosens and the landscape becomes inward.",
     atmosphere: {
       bg: "#0C0E0B",
       accent: "#A99A68",
       mist: "#8F967F",
       rain: "#4B554B",
-      glow: "rgba(153, 142, 96, 0.18)",
+      glow: "rgba(153, 142, 96, 0.2)",
       shadow: "rgba(5, 8, 4, 0.9)",
       texture: "dream-paper"
     },
@@ -152,12 +180,14 @@ export const secondaryWorks: LiteraryWork[] = [
   },
   {
     id: "swaroopa",
-    tier: "secondary",
+    tier: "primary",
     englishTitle: "Swaroopa",
+    kannadaTitle: kannadaText.bookSwaroopa,
     form: "novel",
     tone: "form, identity, reflective quiet",
     mood: "inner form",
     themes: ["self", "shape", "philosophical reflection"],
+    fragmentKannada: kannadaText.bookSwaroopaFragment,
     fragmentEnglish:
       "A reflective chamber where form is not surface, but a question held in low light.",
     atmosphere: {
@@ -165,13 +195,40 @@ export const secondaryWorks: LiteraryWork[] = [
       accent: "#B79A62",
       mist: "#999180",
       rain: "#5A5A52",
-      glow: "rgba(181, 145, 88, 0.16)",
+      glow: "rgba(181, 145, 88, 0.18)",
       shadow: "rgba(10, 8, 5, 0.9)",
       texture: "ink-form"
     },
     soundMood: "low room tone, paper breath",
     transition: "ink settles into shape"
   },
+  {
+    id: "kannada-nadina-hakkigalu",
+    tier: "primary",
+    englishTitle: "Kannada Nadina Hakkigalu",
+    kannadaTitle: kannadaText.bookKannadaNadinaHakkigalu,
+    form: "nature writing",
+    tone: "bird field-notes, patient attention",
+    mood: "bird field-notes",
+    themes: ["birds", "field observation", "ecology"],
+    fragmentKannada: kannadaText.bookKannadaNadinaHakkigaluFragment,
+    fragmentEnglish:
+      "Attention lifts from the page like a bird call heard through wet leaves.",
+    atmosphere: {
+      bg: "#08110D",
+      accent: "#A7A968",
+      mist: "#9FAE98",
+      rain: "#52665B",
+      glow: "rgba(155, 176, 112, 0.2)",
+      shadow: "rgba(2, 10, 6, 0.9)",
+      texture: "field-guide"
+    },
+    soundMood: "distant bird calls, leaf drip",
+    transition: "a small call opens the canopy"
+  }
+];
+
+export const secondaryWorks: LiteraryWork[] = [
   {
     id: "yamala-prashne",
     tier: "secondary",
@@ -237,28 +294,6 @@ export const secondaryWorks: LiteraryWork[] = [
     },
     soundMood: "thin rain, quiet breath",
     transition: "a line of light crosses paper"
-  },
-  {
-    id: "kannada-nadina-hakkigalu",
-    tier: "secondary",
-    englishTitle: "Kannada Nadina Hakkigalu",
-    form: "nature writing",
-    tone: "bird field-notes, patient attention",
-    mood: "bird field-notes",
-    themes: ["birds", "field observation", "ecology"],
-    fragmentEnglish:
-      "Attention lifts from the page like a bird call heard through wet leaves.",
-    atmosphere: {
-      bg: "#08110D",
-      accent: "#A7A968",
-      mist: "#9FAE98",
-      rain: "#52665B",
-      glow: "rgba(155, 176, 112, 0.18)",
-      shadow: "rgba(2, 10, 6, 0.9)",
-      texture: "field-guide"
-    },
-    soundMood: "distant bird calls, leaf drip",
-    transition: "a small call opens the canopy"
   },
   {
     id: "hosa-vicharagalu",
