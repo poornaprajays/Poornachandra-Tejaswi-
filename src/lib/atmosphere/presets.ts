@@ -28,6 +28,87 @@ export const atmospherePresets: Record<AtmosphereId, AtmospherePreset> = {
       opacity: 0.72
     }
   },
+  "malnad-rain-country": {
+    id: "malnad-rain-country",
+    label: "Malnad Rain Country",
+    colors: {
+      background: "#07100B",
+      foreground: "#E3DAC3",
+      accent: "#A99155",
+      mist: "#AEB8AD",
+      rain: "#637477"
+    },
+    fog: {
+      density: 0.86,
+      speed: 0.16,
+      blur: 24
+    },
+    rain: {
+      intensity: 0.72,
+      speed: 0.78,
+      opacity: 0.42
+    },
+    grain: {
+      opacity: 0.18
+    },
+    vignette: {
+      opacity: 0.78
+    }
+  },
+  "mind-wild-observatory": {
+    id: "mind-wild-observatory",
+    label: "Mind In The Wild Observatory",
+    colors: {
+      background: "#0E100B",
+      foreground: "#E5D6BA",
+      accent: "#B18C52",
+      mist: "#A39D8E",
+      rain: "#4C5957"
+    },
+    fog: {
+      density: 0.48,
+      speed: 0.1,
+      blur: 16
+    },
+    rain: {
+      intensity: 0.24,
+      speed: 0.36,
+      opacity: 0.18
+    },
+    grain: {
+      opacity: 0.24
+    },
+    vignette: {
+      opacity: 0.68
+    }
+  },
+  "books-forests": {
+    id: "books-forests",
+    label: "Books As Forests",
+    colors: {
+      background: "#080908",
+      foreground: "#E8D8B8",
+      accent: "#B18E50",
+      mist: "#8E9688",
+      rain: "#3C4A46"
+    },
+    fog: {
+      density: 0.58,
+      speed: 0.08,
+      blur: 20
+    },
+    rain: {
+      intensity: 0.18,
+      speed: 0.28,
+      opacity: 0.14
+    },
+    grain: {
+      opacity: 0.25
+    },
+    vignette: {
+      opacity: 0.76
+    }
+  },
   "rain-manuscript": {
     id: "rain-manuscript",
     label: "Rain Manuscript",

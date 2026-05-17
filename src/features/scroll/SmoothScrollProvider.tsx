@@ -28,15 +28,45 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
     lenis.on("scroll", ScrollTrigger.update);
 
+    const handleAnchorClick = (event: MouseEvent) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const anchor = target.closest<HTMLAnchorElement>("a[href^='#']");
+      const hash = anchor?.getAttribute("href");
+
+      if (!anchor || !hash || hash === "#") {
+        return;
+      }
+
+      const scrollTarget = document.querySelector<HTMLElement>(hash);
+
+      if (!scrollTarget) {
+        return;
+      }
+
+      event.preventDefault();
+      window.history.pushState(null, "", hash);
+      lenis.scrollTo(scrollTarget, {
+        offset: 0,
+        duration: 1.4
+      });
+    };
+
     const tick = (time: number) => {
       lenis.raf(time * 1000);
     };
 
+    document.addEventListener("click", handleAnchorClick);
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
     ScrollTrigger.refresh();
 
     return () => {
+      document.removeEventListener("click", handleAnchorClick);
       gsap.ticker.remove(tick);
       lenis.destroy();
     };

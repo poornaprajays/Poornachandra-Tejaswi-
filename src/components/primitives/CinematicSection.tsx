@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import type { AtmosphereId } from "@/lib/atmosphere/types";
 import { cn } from "@/lib/utils/cn";
 
@@ -7,22 +7,22 @@ type CinematicSectionProps = ComponentPropsWithoutRef<"section"> & {
   children: ReactNode;
 };
 
-export function CinematicSection({
-  atmosphere,
-  children,
-  className,
-  ...props
-}: CinematicSectionProps) {
-  return (
-    <section
-      data-atmosphere={atmosphere}
-      className={cn(
-        "relative z-10 flex overflow-hidden bg-transparent text-[color:var(--atmosphere-fg)]",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </section>
-  );
-}
+export const CinematicSection = forwardRef<HTMLElement, CinematicSectionProps>(
+  ({ atmosphere, children, className, ...props }, ref) => {
+    return (
+      <section
+        ref={ref}
+        data-atmosphere={atmosphere}
+        className={cn(
+          "relative z-10 flex overflow-hidden bg-transparent text-[color:var(--atmosphere-fg)]",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </section>
+    );
+  }
+);
+
+CinematicSection.displayName = "CinematicSection";

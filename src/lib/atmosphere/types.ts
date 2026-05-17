@@ -1,5 +1,8 @@
 export type AtmosphereId =
   | "mist-forest-night"
+  | "malnad-rain-country"
+  | "mind-wild-observatory"
+  | "books-forests"
   | "rain-manuscript"
   | "golden-legacy";
 

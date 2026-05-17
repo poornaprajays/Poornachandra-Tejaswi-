@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { AtmosphereLayers } from "@/features/atmosphere/AtmosphereLayers";
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="kn" suppressHydrationWarning>
