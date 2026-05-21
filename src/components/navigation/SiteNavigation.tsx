@@ -8,8 +8,7 @@ const navItems = [
   { href: "#entrance", label: "Entrance" },
   { href: "#rain-country", label: "Rain Country" },
   { href: "#mind-wild", label: "Mind" },
-  { href: "#books-forests", label: "Books" },
-  { href: "#threshold", label: "Foundation" }
+  { href: "#books-forests", label: "Books" }
 ];
 
 export function SiteNavigation() {
