@@ -3,16 +3,6 @@
 A cinematic Next.js foundation for an atmospheric storytelling website dedicated
 to Poornachandra Tejaswi.
 
-## Foundation Layer
-
-- Next.js App Router with TypeScript
-- Tailwind CSS design tokens
-- Framer Motion reveal primitives
-- GSAP ScrollTrigger bridge
-- Lenis smooth scrolling
-- Data-driven atmosphere presets
-- Global fog, rain, grain, and vignette rendering
-- Kannada-first cinematic hero scene
 
 ## Run
 
