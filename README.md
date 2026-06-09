@@ -1,6 +1,6 @@
-# Poornachandra Tejaswi Immersive Archive
+# Poornachandra Tejaswi 
 
 
 <p align="center">
-  <img src="oar2.jpg" alt="Poorna Chandra Tejaswi" width="500">
+  <img src="pochanthe.jpeg" alt="Poorna Chandra Tejaswi" width="100%">
 </p>
