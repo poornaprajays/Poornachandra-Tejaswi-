@@ -3,10 +3,3 @@
 A cinematic Next.js foundation for an atmospheric storytelling website dedicated
 to Poornachandra Tejaswi.
 
-
-## Run
-
-```bash
-npm install
-npm run dev
-```
