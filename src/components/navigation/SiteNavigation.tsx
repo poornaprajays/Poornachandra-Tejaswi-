@@ -9,6 +9,7 @@ const navItems = [
   { href: "#rain-country", label: "Rain Country" },
   { href: "#mind-wild", label: "Mind" },
   { href: "#books-forests", label: "Books" },
+  { href: "#archive-breathes", label: "Archive" },
   { href: "#threshold", label: "Foundation" }
 ];
 

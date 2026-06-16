@@ -1,5 +1,6 @@
 import { CinematicSection } from "@/components/primitives/CinematicSection";
 import { ScrollAtmosphereBridge } from "@/features/atmosphere/ScrollAtmosphereBridge";
+import { ArchiveBreathesSection } from "@/features/archive/ArchiveBreathesSection";
 import { BooksAsForestsSection } from "@/features/books/BooksAsForestsSection";
 import { HeroSection } from "@/features/hero/HeroSection";
 import { MindInTheWildSection } from "@/features/mind-wild/MindInTheWildSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <RainCountrySection />
       <MindInTheWildSection />
       <BooksAsForestsSection />
+      <ArchiveBreathesSection />
       <CinematicSection
         id="threshold"
         atmosphere="rain-manuscript"

@@ -109,6 +109,33 @@ export const atmospherePresets: Record<AtmosphereId, AtmospherePreset> = {
       opacity: 0.76
     }
   },
+  "archive-breathes": {
+    id: "archive-breathes",
+    label: "The Archive Breathes",
+    colors: {
+      background: "#100B08",
+      foreground: "#E7D2AE",
+      accent: "#B98452",
+      mist: "#A89983",
+      rain: "#5C625C"
+    },
+    fog: {
+      density: 0.42,
+      speed: 0.07,
+      blur: 18
+    },
+    rain: {
+      intensity: 0.22,
+      speed: 0.3,
+      opacity: 0.16
+    },
+    grain: {
+      opacity: 0.31
+    },
+    vignette: {
+      opacity: 0.84
+    }
+  },
   "rain-manuscript": {
     id: "rain-manuscript",
     label: "Rain Manuscript",

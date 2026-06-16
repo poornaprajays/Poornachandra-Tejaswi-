@@ -3,6 +3,7 @@ export type AtmosphereId =
   | "malnad-rain-country"
   | "mind-wild-observatory"
   | "books-forests"
+  | "archive-breathes"
   | "rain-manuscript"
   | "golden-legacy";
 
